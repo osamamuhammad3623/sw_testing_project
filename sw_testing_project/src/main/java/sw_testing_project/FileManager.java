@@ -7,4 +7,8 @@ public class FileManager {
 
         return data;
     }
+
+    public static void write_file(){
+
+    }
 }
