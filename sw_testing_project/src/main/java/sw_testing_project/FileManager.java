@@ -15,7 +15,7 @@ public class FileManager {
             // reading the file, line by line
             line = buf_read.readLine();
             while(line != null) {
-                data = data + line;
+                data = data + line + "\n";
                 line = buf_read.readLine();
             }
 
@@ -30,6 +30,11 @@ public class FileManager {
         return data;
     }
 
+    public StudentRecord[] parse_input(String file_data){
+        StudentRecord result[] = {};
+
+        return result;
+    }
     public static void write_file(){
 
     }
