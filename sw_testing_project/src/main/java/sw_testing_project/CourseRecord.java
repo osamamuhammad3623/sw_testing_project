@@ -19,4 +19,16 @@ public class CourseRecord {
             student.student_gpa = StudentRecord.get_gpa(g); // set the GPA based on the grade
         }
     }
+
+    /*
+    * A function to validate input the course-related data
+    * */
+    public boolean is_valid(){
+        boolean result = false;
+
+        // validate course name
+
+        // validate course code
+        return result;
+    }
 }

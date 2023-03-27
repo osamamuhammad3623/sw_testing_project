@@ -5,7 +5,7 @@ enum Grade{
     B_PLUS,    B,    B_MINUS,
     C_PLUS,    C,    C_MINUS,
     D_PLUS,    D,
-    F,
+    F
 }
 
 
@@ -68,20 +68,48 @@ public class StudentRecord {
     * A static function to calculate the GPA based on the input grade
     * */
     public static float get_gpa(Grade grade){
-        float result = switch (grade) {
-            case F -> 0;
-            case D -> 1;
-            case D_PLUS -> 1.3f;
-            case C_MINUS -> 1.7f;
-            case C -> 2f;
-            case C_PLUS -> 2.3f;
-            case B_MINUS -> 2.7f;
-            case B -> 3f;
-            case B_PLUS -> 3.3f;
-            case A_MINUS -> 3.7f;
-            case A, A_PLUS -> 4f;
-            default -> 4f;
+        float result =0;
+        switch (grade) {
+            case F:  result=0;
+            case D: result=1;
+            case D_PLUS: result=1.3f;
+            case C_MINUS: result=1.7f;
+            case C: result=2f;
+            case C_PLUS: result=2.3f;
+            case B_MINUS: result=2.7f;
+            case B: result=3f;
+            case B_PLUS: result=3.3f;
+            case A_MINUS: result=3.7f;
+            case A, A_PLUS: result=4f;
+            default: result=4f;
         };
+
+        return result;
+    }
+
+    /*
+    * A function to validate input the student-related data
+    * */
+    public boolean is_valid(){
+        boolean result = true;
+
+        // validate student name
+
+        // validate student code
+
+        // validate student marks
+        if (!((activities_mark >= 0) && (activities_mark <= 10))){
+            result = false;
+        }
+        if (!((practical_mark >= 0) && (practical_mark <= 10))){
+            result = false;
+        }
+        if (!((midterm_mark >= 0) && (midterm_mark <= 20))){
+            result = false;
+        }
+        if (!((final_mark >= 0) && (final_mark <= 60))){
+            result = false;
+        }
 
         return result;
     }
