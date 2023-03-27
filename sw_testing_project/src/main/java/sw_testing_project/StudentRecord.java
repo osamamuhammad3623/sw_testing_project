@@ -20,6 +20,10 @@ public class StudentRecord {
     public int midterm_mark;
     public int final_mark;
 
+    // to be calculated based on student marks;
+    Grade student_grade;
+    float student_gpa;
+
     public int get_total_marks(){
         return (activities_mark + practical_mark + midterm_mark + final_mark);
     }
@@ -27,7 +31,7 @@ public class StudentRecord {
     /*
     * A function to calculate the student's grade based on the total mark
     * */
-    public Grade calculate_grade(){
+    public Grade get_grade(){
         Grade result=Grade.A_PLUS; // default value
         int total = get_total_marks();
 
