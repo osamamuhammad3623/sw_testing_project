@@ -64,7 +64,10 @@ public class StudentRecord {
         return result;
     }
 
-    public float get_gpa(Grade grade){
+    /*
+    * A static function to calculate the GPA based on the input grade
+    * */
+    public static float get_gpa(Grade grade){
         float result = switch (grade) {
             case F -> 0;
             case D -> 1;

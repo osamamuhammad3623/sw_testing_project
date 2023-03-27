@@ -16,8 +16,7 @@ public class CourseRecord {
             // calculate the student grade
             g = students[i].get_grade();
             students[i].student_grade = g; // set the student grade
-            students[i].student_gpa = students[i].get_gpa(g); // set the GPA based on the grade
-
+            students[i].student_gpa = StudentRecord.get_gpa(g); // set the GPA based on the grade
         }
     }
 }
