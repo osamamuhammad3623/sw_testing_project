@@ -12,11 +12,11 @@ public class CourseRecord {
     * */
     public void process_student_records(){
         Grade g;
-        for (int i=0; i< students.length; i++){
+        for (StudentRecord student : students) {
             // calculate the student grade
-            g = students[i].get_grade();
-            students[i].student_grade = g; // set the student grade
-            students[i].student_gpa = StudentRecord.get_gpa(g); // set the GPA based on the grade
+            g = student.get_grade();
+            student.student_grade = g; // set the student grade
+            student.student_gpa = StudentRecord.get_gpa(g); // set the GPA based on the grade
         }
     }
 }

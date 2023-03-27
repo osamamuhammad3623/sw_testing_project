@@ -36,7 +36,7 @@ public class FileManager {
     /*
     * A function to parse the string - from file - and returns a CourseRecord containing the data.
     * */
-    public CourseRecord parse_input(String data){
+    public static CourseRecord parse_input(String data){
         CourseRecord result = new CourseRecord();
 
         return result;
