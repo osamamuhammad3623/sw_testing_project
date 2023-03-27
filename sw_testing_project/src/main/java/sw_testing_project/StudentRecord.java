@@ -1,17 +1,10 @@
 package sw_testing_project;
 
 enum Grade{
-    A_PLUS,
-    A,
-    A_MINUS,
-    B_PLUS,
-    B,
-    B_MINUS,
-    C_PLUS,
-    C,
-    C_MINUS,
-    D_PLUS,
-    D,
+    A_PLUS,    A,    A_MINUS,
+    B_PLUS,    B,    B_MINUS,
+    C_PLUS,    C,    C_MINUS,
+    D_PLUS,    D,
     F,
 }
 
@@ -30,6 +23,10 @@ public class StudentRecord {
     public int get_total_marks(){
         return (activities_mark + practical_mark + midterm_mark + final_mark);
     }
+
+    /*
+    * A function to calculate the student's grade based on the total mark
+    * */
     public Grade calculate_grade(){
         Grade result=Grade.A_PLUS; // default value
         int total = get_total_marks();

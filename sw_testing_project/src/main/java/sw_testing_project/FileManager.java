@@ -4,6 +4,9 @@ import java.io.*;
 
 public class FileManager {
 
+    /**
+     * A function to read a file & returns data as string
+     */
     public static String read_file(String absolute_file_path){
         String line;
         String data="";
@@ -30,12 +33,19 @@ public class FileManager {
         return data;
     }
 
-    public StudentRecord[] parse_input(String file_data){
-        StudentRecord result[] = {};
+    /*
+    * A function to parse the string - from file - and returns a CourseRecord containing the data.
+    * */
+    public CourseRecord parse_input(String data){
+        CourseRecord result = new CourseRecord();
 
         return result;
     }
-    public static void write_file(){
+
+    /*
+    * A function to write a CourseRecord into a file
+    * */
+    public static void write_file(CourseRecord course_record){
 
     }
 }
