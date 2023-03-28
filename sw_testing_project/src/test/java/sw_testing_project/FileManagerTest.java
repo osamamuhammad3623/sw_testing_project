@@ -1,8 +1,11 @@
 package sw_testing_project;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import java.io.File;
 
 import static org.junit.Assert.*;
 
@@ -48,9 +51,29 @@ public class FileManagerTest {
         // actual results coming from the parse_input method
         StudentRecord[] actual_students = new StudentRecord[3];
         actual_students[0] = valid_course_record.students[0];
-        actual_students[3] = valid_course_record.students[3];
-        actual_students[6] = valid_course_record.students[6];
+        actual_students[1] = valid_course_record.students[3];
+        actual_students[2] = valid_course_record.students[6];
 
-        assertEquals(expected_students, actual_students);
+        boolean result=true;
+        for (int i=0; i<3; i++){
+            result = expected_students[i].name.equals(actual_students[i].name)
+                && expected_students[i].number.equals(actual_students[i].number)
+                && expected_students[i].activities_mark == actual_students[i].activities_mark
+                && expected_students[i].practical_mark == actual_students[i].practical_mark
+                && expected_students[i].midterm_mark == actual_students[i].midterm_mark
+                && expected_students[i].final_mark == actual_students[i].final_mark;
+
+            if (!result){
+                break;
+            }
+        }
+
+        assertTrue(result);
     }
+
+    @Test
+    public void parse_input_test_student_array_length() {
+        assertEquals(valid_course_record.students.length, 7);
+    }
+
 }

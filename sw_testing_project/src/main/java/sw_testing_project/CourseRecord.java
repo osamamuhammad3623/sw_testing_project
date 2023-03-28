@@ -5,7 +5,8 @@ public class CourseRecord {
     public String code;
     public int full_mark;
 
-    public StudentRecord[] students = new StudentRecord[1000]; // array of students registered the course
+    public StudentRecord[] students; // array of students registered the course
+
 
     /*
     * A function to iterate on students & set their grades & GPAs
@@ -14,10 +15,15 @@ public class CourseRecord {
 
         Grade g;
         for (StudentRecord student : students) {
-            // calculate the student grade
-            g = student.get_grade();
-            student.student_grade = g; // set the student grade
-            student.student_gpa = StudentRecord.get_gpa(g); // set the GPA based on the grade
+
+            if (student.is_valid()){
+                // calculate the student grade
+                g = student.get_grade();
+                student.student_grade = g; // set the student grade
+                student.student_gpa = StudentRecord.get_gpa(g); // set the GPA based on the grade
+            }else{
+                // error handling
+            }
         }
     }
 

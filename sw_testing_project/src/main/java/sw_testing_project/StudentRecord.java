@@ -83,18 +83,18 @@ public class StudentRecord {
     public static float get_gpa(Grade grade){
         float result =0;
         switch (grade) {
-            case F:  result=0;
-            case D: result=1;
-            case D_PLUS: result=1.3f;
-            case C_MINUS: result=1.7f;
-            case C: result=2f;
-            case C_PLUS: result=2.3f;
-            case B_MINUS: result=2.7f;
-            case B: result=3f;
-            case B_PLUS: result=3.3f;
-            case A_MINUS: result=3.7f;
-            case A, A_PLUS: result=4f;
-            default: result=4f;
+            case F:  result=0; break;
+            case D: result=1; break;
+            case D_PLUS: result=1.3f; break;
+            case C_MINUS: result=1.7f; break;
+            case C: result=2f; break;
+            case C_PLUS: result=2.3f; break;
+            case B_MINUS: result=2.7f; break;
+            case B: result=3f; break;
+            case B_PLUS: result=3.3f; break;
+            case A_MINUS: result=3.7f; break;
+            case A, A_PLUS: result=4f; break;
+            default: result=4f; break;
         };
 
         return result;

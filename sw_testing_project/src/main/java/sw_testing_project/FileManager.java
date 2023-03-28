@@ -37,18 +37,20 @@ public class FileManager {
 	 * A function to parse the string - from file - and returns a CourseRecord containing the data.
 	 * */
 	public static CourseRecord parse_input(String data){
-		CourseRecord result = new CourseRecord();
-
 
 		String[] lines = data.split("\\r?\\n");
 		String delims = "[,]+";
 		String[] courseData = lines[0].split(delims);
+
+		CourseRecord result = new CourseRecord();
 
 		//retrieve the course data
 		result.name = courseData[0];
 		result.code = courseData[1];
 		result.full_mark = Integer.parseInt(courseData[2]);
 
+		// set number of students
+		result.students = new StudentRecord[lines.length-1];
 		for(int i = 1; i<lines.length ;i++)
 		{
 			String[] studentData = lines[i].split(delims);

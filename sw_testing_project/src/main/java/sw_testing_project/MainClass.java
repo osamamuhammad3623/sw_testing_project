@@ -12,7 +12,7 @@ public class MainClass {
         CourseRecord course_record = FileManager.parse_input(text);
 
         // process student records to calculate & set the grade & GPA of each student
-        course_record.process_student_records();
+        //course_record.process_student_records();
 
         // write the CourseRecord - after calculating student grades & GPAs - into a file
         //FileManager.write_file(course_record);
