@@ -107,8 +107,35 @@ public class StudentRecord {
         boolean result = true;
 
         // validate student name
+        // check that first char is NOT space
+        if (Character.isSpaceChar(name.charAt(0))){
+            result = false;
+        }
+        // check that every char is alpha
+        for (int i=0; i< name.length(); i++){
+            if (!Character.isLetter(name.charAt(i))){
+                result = false;
+                break;
+            }
+        }
 
-        // validate student code
+        // validate student number
+        if (number.length() == 8){
+            // check that every char is alpha
+            for (int i=0; i< number.length()-1; i++){
+                if (!Character.isDigit(name.charAt(i))){
+                    result = false;
+                    break;
+                }
+            }
+
+            // check that last char is alpha or numeric only
+            if (!(Character.isLetter(number.charAt(7)) || Character.isDigit(number.charAt(7)))){
+                result = false;
+            }
+        }else{
+            result = false;
+        }
 
         // validate student marks
         if (!((activities_mark >= 0) && (activities_mark <= 10))){
