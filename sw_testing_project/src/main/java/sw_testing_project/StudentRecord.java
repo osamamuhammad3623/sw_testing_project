@@ -125,14 +125,16 @@ public class StudentRecord {
             for (int i=0; i< number.length()-1; i++){
                 if (!Character.isDigit(name.charAt(i))){
                     result = false;
-                    break;
+                }
+
+                // check that last char is alpha or numeric only
+                if (i == 7){
+                    if (!(Character.isLetter(number.charAt(7)) || Character.isDigit(number.charAt(7)))){
+                        result = false;
+                    }
                 }
             }
 
-            // check that last char is alpha or numeric only
-            if (!(Character.isLetter(number.charAt(7)) || Character.isDigit(number.charAt(7)))){
-                result = false;
-            }
         }else{
             result = false;
         }
