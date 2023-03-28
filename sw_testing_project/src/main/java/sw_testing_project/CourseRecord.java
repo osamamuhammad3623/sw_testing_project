@@ -11,6 +11,7 @@ public class CourseRecord {
     * A function to iterate on students & set their grades & GPAs
     * */
     public void process_student_records(){
+
         Grade g;
         for (StudentRecord student : students) {
             // calculate the student grade

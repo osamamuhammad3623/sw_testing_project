@@ -24,6 +24,19 @@ public class StudentRecord {
     Grade student_grade;
     float student_gpa;
 
+    StudentRecord(String _n, String _num, int acti, int prac, int mid, int fi){
+        this.name = _n;
+        this.number = _num;
+        this.activities_mark = acti;
+        this.practical_mark = prac;
+        this.midterm_mark = mid;
+        this.final_mark = fi;
+    }
+
+    StudentRecord(){
+
+    }
+
     public int get_total_marks(){
         return (activities_mark + practical_mark + midterm_mark + final_mark);
     }
