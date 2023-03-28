@@ -5,7 +5,7 @@ public class CourseRecord {
     public String code;
     public int full_mark;
 
-    public StudentRecord[] students; // array of students registered the course
+    public StudentRecord[] students = new StudentRecord[1000]; // array of students registered the course
 
     /*
     * A function to iterate on students & set their grades & GPAs

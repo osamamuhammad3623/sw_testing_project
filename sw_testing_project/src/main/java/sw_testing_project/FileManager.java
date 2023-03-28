@@ -49,19 +49,20 @@ public class FileManager {
 		result.code = courseData[1];
 		result.full_mark = Integer.parseInt(courseData[2]);
 
-		for(int i = 1; i<(lines.length - 1 );i++)
+		for(int i = 1; i<lines.length ;i++)
 		{
 			String[] studentData = lines[i].split(delims);
 			if(result.students != null)
 			{
 				result.students[i-1] = new StudentRecord();
 				result.students[i-1].name = studentData[0];
-				result.students[i-1].name = studentData[1];
+				result.students[i-1].number = studentData[1];
 				result.students[i-1].activities_mark = Integer.parseInt(studentData[2]);
 				result.students[i-1].practical_mark = Integer.parseInt(studentData[3]);
 				result.students[i-1].midterm_mark = Integer.parseInt(studentData[4]);
 				result.students[i-1].final_mark = Integer.parseInt(studentData[5]);
 			}
+			
 
 		}
 
