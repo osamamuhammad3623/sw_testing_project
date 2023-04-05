@@ -1,4 +1,4 @@
-package sw_testing_project;
+
 
 import java.io.*;
 
@@ -14,14 +14,27 @@ public class FileManager {
 		{
 			FileReader fileReader = new FileReader(absolute_file_path);
 			BufferedReader buf_read = new BufferedReader(fileReader);
-
 			// reading the file, line by line
 			line = buf_read.readLine();
-			while(line != null) {
+			//check if the first line is not as expected
+			//return an empty string is its not as expected 
+			if(isValidLine(line, true) == false)
+			{
+				System.out.print("Not the expected Data in line 1");
+				buf_read.close();
+				return "";//return an empty string
+			}
+			else 
+			{
 				data = data + line + "\n";
+			}
+			line = buf_read.readLine();
+			while(line != null) {
+				//check if the line is not as expected ignore it take the next 
+				if(isValidLine(line, false) == true)
+					data = data + line + "\n";
 				line = buf_read.readLine();
 			}
-
 			// close stream/buffer
 			buf_read.close();
 		}
@@ -33,11 +46,33 @@ public class FileManager {
 		return data;
 	}
 
+	public static boolean isValidLine(String Line,boolean isFirst)
+	{
+		String delims = "[,]+";
+		String[] isValidLine = Line.split(delims);
+		if(isFirst)
+		{
+			if(isValidLine.length ==3)
+				return true;
+			else 
+				return false;
+		}
+		else 
+		{
+			if(isValidLine.length == 6)
+				return true;
+			else 
+				return false;
+		}
+
+	}
+
 	/*
 	 * A function to parse the string - from file - and returns a CourseRecord containing the data.
 	 * */
 	public static CourseRecord parse_input(String data){
 
+		//split data into lines
 		String[] lines = data.split("\\r?\\n");
 		String delims = "[,]+";
 		String[] courseData = lines[0].split(delims);
@@ -64,7 +99,7 @@ public class FileManager {
 				result.students[i-1].midterm_mark = Integer.parseInt(studentData[4]);
 				result.students[i-1].final_mark = Integer.parseInt(studentData[5]);
 			}
-			
+
 
 		}
 
