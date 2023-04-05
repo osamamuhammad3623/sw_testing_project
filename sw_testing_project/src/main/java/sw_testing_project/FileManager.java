@@ -109,9 +109,9 @@ public class FileManager {
 	/*
 	 * A function to write a CourseRecord into a file
 	 * */
-	public static void write_file(CourseRecord course_record){
+	public static void write_file(CourseRecord course_record , String path){
 		try {
-			FileWriter myWriter = new FileWriter("filename.txt");
+			FileWriter myWriter = new FileWriter(path);
 			myWriter.write("Subject Name: "+course_record.name+"      "+"Max Mark: "+course_record.full_mark+'\n');
 			myWriter.write("Student name    "+"Student number    "+"GPA    "+"Grade    "+'\n');
 			for (StudentRecord student : course_record.students)

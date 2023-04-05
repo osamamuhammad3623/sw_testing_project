@@ -17,7 +17,7 @@ public class MainClass {
 			course_record.process_student_records();
 
 			// write the CourseRecord - after calculating student grades & GPAs - into a file
-			FileManager.write_file(course_record);
+			FileManager.write_file(course_record, "outFile.txt");
 		}
 
 	}
