@@ -6,8 +6,9 @@ public class FileManager {
 
 	/**
 	 * A function to read a file & returns data as string
+	 * @throws FileNotFoundException 
 	 */
-	public static String read_file(String absolute_file_path){
+	public static String read_file(String absolute_file_path) throws FileNotFoundException{
 		String line;
 		String data="";
 		try
@@ -16,11 +17,15 @@ public class FileManager {
 			BufferedReader buf_read = new BufferedReader(fileReader);
 			// reading the file, line by line
 			line = buf_read.readLine();
+			if(line==null)//check if its an empty file 
+			{
+				buf_read.close();
+				return "";//return an empty string
+			}
 			//check if the first line is not as expected
 			//return an empty string is its not as expected 
 			if(isValidLine(line, true) == false)
 			{
-				System.out.print("Not the expected Data in line 1");
 				buf_read.close();
 				return "";//return an empty string
 			}
@@ -40,12 +45,18 @@ public class FileManager {
 		}
 		catch(IOException e)
 		{
-			System.out.println("Exception: " +e);
+			//System.out.println("Exception: " +e);
+			throw new FileNotFoundException("File not found: " + absolute_file_path);
 		}
 
 		return data;
 	}
-
+	/**
+	 * A function to check if the file in the expected format or not 
+	 * inputs 1- line to check its format
+	 * 		  2- boolean if its the first line in the file or not 
+	 * 
+	 */
 	public static boolean isValidLine(String Line,boolean isFirst)
 	{
 		String delims = "[,]+";
@@ -120,9 +131,9 @@ public class FileManager {
 			}
 
 			myWriter.close();
-			System.out.println("Successfully wrote to the file.");
+			//System.out.println("Successfully wrote to the file.");
 		} catch (IOException e) {
-			System.out.println("An error occurred.");
+			//System.out.println("An error occurred.");
 			e.printStackTrace();
 		}
 
