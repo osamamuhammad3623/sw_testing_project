@@ -47,7 +47,7 @@ public class CourseRecord {
 		}
 		// check that every char is alpha
 		for (int i=0; i< name.length(); i++){
-			if (!Character.isLetter(name.charAt(i))){
+			 if ((!Character.isLetter(name.charAt(i))) &&(!Character.isSpaceChar(name.charAt(i)))){
 				result = false;
 				break;
 			}
