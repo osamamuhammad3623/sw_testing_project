@@ -127,7 +127,7 @@ public class FileManager {
 			myWriter.write("Student name    "+"Student number    "+"GPA    "+"Grade    "+'\n');
 			for (StudentRecord student : course_record.students)
 			{
-				myWriter.write(student.name+"  "+student.number+"  "+student.student_gpa+"  "+student.student_grade+'\n');
+				myWriter.write(student.name+"  "+student.number+"  "+student.student_gpa+"  "+student.final_grade+'\n');
 			}
 
 			myWriter.close();

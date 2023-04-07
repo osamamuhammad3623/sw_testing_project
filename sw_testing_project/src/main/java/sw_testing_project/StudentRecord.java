@@ -1,4 +1,4 @@
-package sw_testing_project;
+
 
 enum Grade{
     A_PLUS,    A,    A_MINUS,
@@ -19,10 +19,12 @@ public class StudentRecord {
     public int practical_mark;
     public int midterm_mark;
     public int final_mark;
+    public String final_grade;
+    public float student_gpa;
 
     // to be calculated based on student marks;
-    Grade student_grade;
-    float student_gpa;
+    //Grade student_grade;
+    //float student_gpa;
 
     StudentRecord(String _n, String _num, int acti, int prac, int mid, int fi){
         this.name = _n;
@@ -73,8 +75,56 @@ public class StudentRecord {
         }else if ((total >= 97) && (total<=100)){
             result = Grade.A_PLUS;
         }
-
+        set_student_grade(result);
+        //get_gpa(result);
+        
         return result;
+    }
+    
+    public void set_student_grade(Grade grade)
+    {
+    	switch (grade)
+    	{
+    	case F:
+    		this.final_grade = "F";
+    		break;
+    	case D:
+    		this.final_grade="D";
+    		break;
+    	case D_PLUS:
+    		this.final_grade="D+";
+    		break;
+    	case C_MINUS:
+    		this.final_grade="C-";
+    		break;
+    	case C:
+    		this.final_grade="C";
+    		break;
+    	case C_PLUS:
+    		this.final_grade="C+";
+    		break;
+    	case B_MINUS:
+    		this.final_grade="B-";
+    		break;
+    	case B:
+    		this.final_grade="B";
+    		break;
+    	case B_PLUS:
+    		this.final_grade="B+";
+    		break;
+    	case A_MINUS:
+    		this.final_grade="A-";
+    		break;
+    	case A:
+    		this.final_grade="A";
+    		break;
+    	case A_PLUS:
+    		this.final_grade="A+";
+    		break;
+    	default:
+    		this.final_grade = "";
+    		break;
+    	}
     }
 
     /*
@@ -83,7 +133,9 @@ public class StudentRecord {
     public static float get_gpa(Grade grade){
         float result =0;
         switch (grade) {
-            case F:  result=0; break;
+            case F:  
+            	result=0;
+            break;
             case D: result=1; break;
             case D_PLUS: result=1.3f; break;
             case C_MINUS: result=1.7f; break;
@@ -93,12 +145,16 @@ public class StudentRecord {
             case B: result=3f; break;
             case B_PLUS: result=3.3f; break;
             case A_MINUS: result=3.7f; break;
-            case A, A_PLUS: result=4f; break;
+            case A: result=4f; break;
+            case A_PLUS: result=4f; break;
             default: result=4f; break;
         };
+        //this.student_gpa = result;
 
         return result;
     }
+    
+    
 
     /*
     * A function to validate input the student-related data
@@ -113,7 +169,7 @@ public class StudentRecord {
         }
         // check that every char is alpha
         for (int i=0; i< name.length(); i++){
-            if (!Character.isLetter(name.charAt(i))){
+            if ((!Character.isLetter(name.charAt(i))) &&(!Character.isSpaceChar(name.charAt(i)))){
                 result = false;
                 break;
             }
@@ -123,7 +179,7 @@ public class StudentRecord {
         if (number.length() == 8){
             // check that every char is alpha
             for (int i=0; i< number.length()-1; i++){
-                if (!Character.isDigit(name.charAt(i))){
+                if (!Character.isDigit(number.charAt(i))){
                     result = false;
                 }
 

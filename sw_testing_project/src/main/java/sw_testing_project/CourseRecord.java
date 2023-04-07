@@ -1,4 +1,4 @@
-package sw_testing_project;
+
 
 public class CourseRecord {
     public String name;
@@ -18,8 +18,7 @@ public class CourseRecord {
 
             if (student.is_valid()){
                 // calculate the student grade
-                g = student.get_grade();
-                student.student_grade = g; // set the student grade
+               g =   student.get_grade();
                 student.student_gpa = StudentRecord.get_gpa(g); // set the GPA based on the grade
             }else{
                 // error handling
