@@ -1,4 +1,4 @@
-package sw_testing_project;
+//package sw_testing_project;
 
 import org.junit.Test;
 
@@ -231,4 +231,174 @@ public class StudentRecordTest {
     public void get_gpa_A_plus() {
         assertEquals(StudentRecord.get_gpa(Grade.A_PLUS), 4f,0);
     }
+    
+    @Test
+    public void testValidStudentRecorde()
+    {
+    	 StudentRecord temp = new StudentRecord();
+    	 temp.name = "Kyrillos";
+    	 temp.number = "12345678";
+         temp.practical_mark = 10;
+         temp.final_mark = 60;
+         temp.activities_mark = 10;
+         temp.midterm_mark = 18;
+         assertTrue(temp.is_valid());
+    }
+    @Test
+    public void testInValidStudentName()
+    {
+    	 StudentRecord temp = new StudentRecord();
+    	 temp.name = "Kyrillos55";
+    	 temp.number = "12345678";
+         temp.practical_mark = 10;
+         temp.final_mark = 60;
+         temp.activities_mark = 10;
+         temp.midterm_mark = 18;
+         assertFalse(temp.is_valid());
+    }
+    
+    @Test
+    public void testInValidStudentName2()//space at first character
+    {
+    	 StudentRecord temp = new StudentRecord();
+    	 temp.name = " Kyrillos";
+    	 temp.number = "12345678";
+         temp.practical_mark = 10;
+         temp.final_mark = 60;
+         temp.activities_mark = 10;
+         temp.midterm_mark = 18;
+         assertFalse(temp.is_valid());
+    }
+    
+    @Test
+    public void testInValidStudentnumber()//small student number
+    {
+    	 StudentRecord temp = new StudentRecord();
+    	 temp.name = " Kyrillos55";
+    	 temp.number = "1234567";
+         temp.practical_mark = 10;
+         temp.final_mark = 60;
+         temp.activities_mark = 10;
+         temp.midterm_mark = 18;
+         assertFalse(temp.is_valid());
+    }
+    
+    @Test
+    public void testInValidStudentnumber2()//large student number
+    {
+    	 StudentRecord temp = new StudentRecord();
+    	 temp.name = " Kyrillos55";
+    	 temp.number = "123456789";
+         temp.practical_mark = 10;
+         temp.final_mark = 60;
+         temp.activities_mark = 10;
+         temp.midterm_mark = 18;
+         assertFalse(temp.is_valid());
+    }
+    
+    @Test
+    public void testInvalid_PracticalMark()//less than 0
+    {
+    	 StudentRecord temp = new StudentRecord();
+    	 temp.name = "Kyrillos";
+    	 temp.number = "12345678";
+         temp.practical_mark = -10;
+         temp.final_mark = 60;
+         temp.activities_mark = 10;
+         temp.midterm_mark = 18;
+         assertFalse(temp.is_valid());
+    }
+    
+    @Test
+    public void testInvalid_PracticalMark2()//larger than 10
+    {
+    	 StudentRecord temp = new StudentRecord();
+    	 temp.name = "Kyrillos";
+    	 temp.number = "12345678";
+         temp.practical_mark = 11;
+         temp.final_mark = 60;
+         temp.activities_mark = 10;
+         temp.midterm_mark = 18;
+         assertFalse(temp.is_valid());
+    }
+    
+    @Test
+    public void testInvalid_Activities_mark()//larger than 10
+    {
+    	 StudentRecord temp = new StudentRecord();
+    	 temp.name = "Kyrillos";
+    	 temp.number = "12345678";
+         temp.practical_mark = 9;
+         temp.final_mark = 60;
+         temp.activities_mark = 11;
+         temp.midterm_mark = 18;
+         assertFalse(temp.is_valid());
+    }
+    
+    @Test
+    public void testInvalid_Activities_mark2()//smaller than 0
+    {
+    	 StudentRecord temp = new StudentRecord();
+    	 temp.name = "Kyrillos";
+    	 temp.number = "12345678";
+         temp.practical_mark = 9;
+         temp.final_mark = 60;
+         temp.activities_mark = -6;
+         temp.midterm_mark = 18;
+         assertFalse(temp.is_valid());
+    }
+    
+    @Test
+    public void testInvalid_midterm_mark()//smaller than 0
+    {
+    	 StudentRecord temp = new StudentRecord();
+    	 temp.name = "Kyrillos";
+    	 temp.number = "12345678";
+         temp.practical_mark = 9;
+         temp.final_mark = 60;
+         temp.activities_mark = 6;
+         temp.midterm_mark = -7;
+         assertFalse(temp.is_valid());
+    }
+    
+    @Test
+    public void testInvalid_midterm_mark2()//larger than 20
+    {
+    	 StudentRecord temp = new StudentRecord();
+    	 temp.name = "Kyrillos";
+    	 temp.number = "12345678";
+         temp.practical_mark = 9;
+         temp.final_mark = 60;
+         temp.activities_mark = 6;
+         temp.midterm_mark = 22;
+         assertFalse(temp.is_valid());
+    }
+    
+    @Test
+    public void testInvalid_final_mark()//larger than 60
+    {
+    	 StudentRecord temp = new StudentRecord();
+    	 temp.name = "Kyrillos";
+    	 temp.number = "12345678";
+         temp.practical_mark = 9;
+         temp.final_mark = 66;
+         temp.activities_mark = 6;
+         temp.midterm_mark = 2;
+         assertFalse(temp.is_valid());
+    }
+    
+    @Test
+    public void testInvalid_final_mark2()//smaller than 0
+    {
+    	 StudentRecord temp = new StudentRecord();
+    	 temp.name = "Kyrillos";
+    	 temp.number = "12345678";
+         temp.practical_mark = 9;
+         temp.final_mark = -9;
+         temp.activities_mark = 6;
+         temp.midterm_mark = 2;
+         assertFalse(temp.is_valid());
+    }
+    
+    
 }
