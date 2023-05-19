@@ -4,9 +4,54 @@ import java.io.FileNotFoundException;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.sun.org.apache.xalan.internal.xsltc.compiler.util.BooleanType;
+
 
 public class ReadFileTest {
 
+	//======================================================================================
+	//==== Test Is Valid Line Function 
+	//====== All White Box, Black Box, Data Flow is Covered
+	//============================================================================
+
+	@Test // valid first line
+	public void testIsValidLine_WithValidFirstLine()
+	{
+		boolean expected = true;
+		boolean result = FileManager.isValidLine("English,ENG101,100", true);
+		Assert.assertEquals(expected, result);
+	}
+	
+	@Test // invalid first line
+	public void testIsValidLine_WithInValidFirstLine()
+	{
+		boolean expected = false;
+		boolean result = FileManager.isValidLine("English,ENG101", true);
+		Assert.assertEquals(expected, result);
+	}
+	
+	@Test // valid in between line
+	public void testIsValidLine_WithValidInBetweenLine()
+	{
+		boolean expected = true;
+		boolean result = FileManager.isValidLine("Jane Smith,23456789,10,8,17,52", false);
+		Assert.assertEquals(expected, result);
+	}
+	
+	@Test // valid in between line
+	public void testIsValidLine_WithInValidInBetweenLine()
+	{
+		boolean expected = false;
+		boolean result = FileManager.isValidLine("23456789,10,8,17,52", false);
+		Assert.assertEquals(expected, result);
+	}
+	
+	
+	//=================================================================
+	//==== Test Is read_file Function 
+	//============== ALL White And Black Box and Data Flow Testing IS covered
+	//=====================================================================
+	//test normal case
 	@Test
 	public void testValidFilePath() throws FileNotFoundException {
 		String expected = "English,ENG101,100"+"\n"+
@@ -27,7 +72,7 @@ public class ReadFileTest {
 		FileManager.read_file("nonexistent.txt");
 	}
 
-	@Test
+	@Test //to test white box condition testing & black box equivalence checking
 	public void testEmptyFile() throws FileNotFoundException {
 		String expected = "";
 		String actual = FileManager.read_file("testEmptyFile.txt");
@@ -41,7 +86,7 @@ public class ReadFileTest {
 		Assert.assertEquals(expected, actual);
 	}
 	
-	@Test
+	@Test //test is the first line is invalid 
 	public void testInvalidFirstline() throws FileNotFoundException
 	{
 		String expected = "";
@@ -49,7 +94,7 @@ public class ReadFileTest {
 		Assert.assertEquals(expected, actual);
 	}
 
-	@Test 
+	@Test // if there are unexpected lines 
 	public void testUnexpectedLines() throws FileNotFoundException {
 		String expected = "English,ENG101,100"+"\n"+
 				"Jane Smith,23456789,10,8,17,52"+"\n"+
@@ -60,7 +105,6 @@ public class ReadFileTest {
 		String actual = FileManager.read_file("unexpectedLines.txt");
 		Assert.assertEquals(expected, actual);
 	}
-
 	
 
 }

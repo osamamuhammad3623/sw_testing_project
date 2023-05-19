@@ -7,6 +7,15 @@ import org.junit.Test;
 
 public class testWriteToFile {
 
+	//=================================================================
+	//============== ALL White Box, Black Box and Data Flow Testing IS covered
+	//=====================================================================
+
+	
+	/*
+	 * to use it to manage to test Write Function 
+	 * to read what is actually written and compare it with what we want to write 
+	 * */
 	String readFile(String path)
 	{
 		String line;
@@ -37,7 +46,7 @@ public class testWriteToFile {
 	}
 
 
-	@Test
+	@Test //Simple test case to test main flow with no student recodes
 	public void testWriteToFile() {
 		CourseRecord course_recorde = new CourseRecord();
 		course_recorde.name = "Software Testing";
@@ -53,7 +62,36 @@ public class testWriteToFile {
 
 		assertEquals(expected, data);
 	}
-	//Test that the function throws an exception when the filename is null:
+	
+	@Test //Simple test case to test main flow with student recodes
+	public void testWriteToFileWithStudentRecodes() {
+		CourseRecord course_recorde = new CourseRecord();
+		course_recorde.name = "Software Testing";
+		course_recorde.code ="123";
+		course_recorde.full_mark=100;
+		course_recorde.students = new StudentRecord[1];
+		course_recorde.students[0] = new StudentRecord();
+		course_recorde.students[0].name= "Kero";
+		course_recorde.students[0].activities_mark= 20;
+		course_recorde.students[0].final_grade= "A";
+		course_recorde.students[0].final_mark= 55;
+		course_recorde.students[0].midterm_mark= 20;
+		course_recorde.students[0].number= "1804628";
+		course_recorde.students[0].practical_mark= 20;
+		course_recorde.students[0].student_gpa= (float) 3.7;
+
+		String expected = "Subject Name: Software Testing      Max Mark: 100"+"\n"
+				+ "Student name    Student number    GPA    Grade    "+"\n"+
+				"Kero  1804628  3.7  A"+"\n";
+
+		FileManager.write_file(course_recorde, "testFile.txt");
+		String data = readFile("testFile.txt");
+
+
+		assertEquals(expected, data);
+	}
+	
+	//test if the file path is NYLL
 	@Test(expected = NullPointerException.class)
 	public void testWriteToFileNullFileName() throws IOException {
 		CourseRecord course_recorde = new CourseRecord();
@@ -77,6 +115,8 @@ public class testWriteToFile {
 		String fileName = "testFile1.txt";
 		FileManager.write_file(course_recorde, fileName);
 	}
+	
+	
 	//Test that the function creates a new file if it doesn't exist:
 	@Test
 	public void testWriteToFileNewFile() throws IOException {
@@ -91,6 +131,8 @@ public class testWriteToFile {
 
 		assertTrue(new File(fileName).exists());
 	}
+	
+	
 	//Test that the function overwrites the content of an existing file:
 	@Test
 	public void testWriteToFileOverwrite() throws IOException {
@@ -111,13 +153,10 @@ public class testWriteToFile {
 		course_recorde2.students = new StudentRecord[0];
 		FileManager.write_file(course_recorde2, "testFile.txt");
 
-		
+
 		String expected = "Subject Name: Software Testing      Max Mark: 100"+"\n"
 				+ "Student name    Student number    GPA    Grade    "+"\n";
 		String data = readFile("testFile.txt");
 		assertEquals(expected, data);
-
-
 	}
-
 }
