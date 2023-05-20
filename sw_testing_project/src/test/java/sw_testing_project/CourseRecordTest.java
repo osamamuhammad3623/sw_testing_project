@@ -15,12 +15,30 @@ public class CourseRecordTest {
          assertTrue(temp.is_valid());
     }
 	@Test
+	public void test_validCourseData()
+    {
+		CourseRecord temp = new CourseRecord();
+    	temp.name = "Software Testing";
+    	temp.code = "ENG101s";
+    	temp.full_mark =100;
+         assertTrue(temp.is_valid());
+    }
+	@Test
 	public void test_Invalid_nameWithSpaceAtFirst()
     {
 		CourseRecord temp = new CourseRecord();
     	temp.name = " Software Testing";
     	temp.code = "ENG101";
     	temp.full_mark =100;
+         assertFalse(temp.is_valid());
+    }
+	@Test
+	public void test_Invalid_Data()
+    {
+		CourseRecord temp = new CourseRecord();
+    	temp.name = " 7oftware Testing";
+    	temp.code = "ENG101o";
+    	temp.full_mark =102;
          assertFalse(temp.is_valid());
     }
 	
@@ -39,6 +57,15 @@ public class CourseRecordTest {
     {
 		CourseRecord temp = new CourseRecord();
     	temp.name = "Software Testing";
+    	temp.code = "ENG1011";
+    	temp.full_mark =100;
+         assertFalse(temp.is_valid());
+    }
+	@Test
+	public void test_Invalid_nameLength_zero()
+    {
+		CourseRecord temp = new CourseRecord();
+    	temp.name = "";
     	temp.code = "ENG1011";
     	temp.full_mark =100;
          assertFalse(temp.is_valid());
